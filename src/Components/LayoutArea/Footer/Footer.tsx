@@ -4,9 +4,9 @@ import "./Footer.css";
 function Footer(): JSX.Element {
     return (
         <div className="Footer">
-			<p>Ofir Abraham</p>
+			<div>Ofir Abraham</div>
 
-            <div>
+            <div className="social">
                 <FaGithub/>
                 <FaTwitter/>
                 <FaLinkedin/>
