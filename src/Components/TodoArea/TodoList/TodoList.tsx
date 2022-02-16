@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Task } from "../../../Models/Task";
+import authService from "../../../Services/AuthService";
 import globals from "../../../Services/Globals";
 import notify, { SccMsg } from "../../../Services/Notification";
 import ILTime from "../../SharedArea/ILTime/ILTime";
@@ -16,7 +17,8 @@ function TodoList(): JSX.Element {
 
     useEffect(() => {
         //ComponentDidMount
-        axios.get<Task[]>(globals.urls.tasks)
+        const headers = {'Authorization': authService.token};
+        axios.get<Task[]>(globals.urls.tasks,{headers: headers})
             .then((res) => {
                 setTasks(res.data);
                 notify.success(SccMsg.GOT_TASKS);
